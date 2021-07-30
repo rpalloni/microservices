@@ -1,6 +1,3 @@
-# https://www.youtube.com/watch?v=kCggyi_7pHg
-# http://worldtimeapi.org/
-
 # cd microservices
 # uvicorn cityapi.main:app --reload --port 8080
 # >> http://127.0.0.1:8080 http://127.0.0.1:8080/docs http://127.0.0.1:8080/redoc
