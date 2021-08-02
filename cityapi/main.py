@@ -46,6 +46,12 @@ def create_city(city: City):
   "name": "Rome",
   "timezone": "Europe/Rome"
 }
+
+{
+  "name": "Dublin",
+  "timezone": "Europe/Dublin"
+}
+
 '''
 
 @app.delete('/cities/{city_id}')
