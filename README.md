@@ -1,6 +1,6 @@
 # microservices
 
-main feature:
+main features:
 * microservice
 * dockerization
 * crud ops via api
