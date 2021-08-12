@@ -1,0 +1,35 @@
+# docker compose version
+version: '3.8'
+
+# services => containers
+services:    
+  pr_db:
+    container_name: pr_db
+    image: postgres:12
+    ports:
+      - 5432:5432  # laptop_port:container_port
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - 'POSTGRES_DB=prdb'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'DATABASE_HOST=pr_db'
+      - 'DATABASE_PORT=5432'
+
+  pr_srv:
+    container_name: pr_srv
+    build: 
+      context: ./drf # content of the local directory [docker-compose folder]
+      dockerfile: Dockerfile
+    # command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn config.wsgi -b 0.0.0.0:8000
+    volumes:
+      - ./drf:/usr/src/drf # wd/path/on/laptop:wd/path/in/container
+    ports:
+      - 8000:8000  # laptop_port:container_port
+    depends_on: 
+      - pr_db
+
+volumes:
+  postgres_data:

@@ -1,0 +1,44 @@
+# docker compose version
+version: '3.8'
+
+# services => containers
+services:
+  ct_db:
+    container_name: ct_db
+    image: postgres:12
+    ports:
+      - 5433:5432  # laptop_port:container_port
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - 'POSTGRES_DB=ctdb'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'DATABASE_HOST=ct_db'
+      - 'DATABASE_PORT=5432'
+
+  ct_srv:
+    container_name: ct_srv
+    build: 
+      context: ./drf # content of the local directory [docker-compose folder]
+      dockerfile: Dockerfile
+    # command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn config.wsgi -b 0.0.0.0:8080
+    volumes:
+      - ./drf:/usr/src/drf # wd/path/on/laptop:wd/path/in/container
+    ports:
+      - 8080:8080  # laptop_port:container_port
+    depends_on: 
+      - ct_db
+
+  ct_queue:
+    container_name: ct_queue
+    build:
+      context: ./drf
+      dockerfile: Dockerfile
+    command: python manage.py consumer
+    depends_on:
+      - ct_db
+
+volumes:
+  postgres_data:
