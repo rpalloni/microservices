@@ -9,6 +9,7 @@ main feature:
 dev tools:
 * FastAPI
 * Django Rest Framework
+* Pika
 * RabbitMQ
 * Docker
 * Postgresql
