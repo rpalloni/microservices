@@ -1,6 +1,6 @@
 Project setup:
 * product microservice (Django Rest Framework)
-CRUD ops via Postman on product microserivce:
+CRUD ops via Postman:
 - create
 - list/retrieve
 - update
