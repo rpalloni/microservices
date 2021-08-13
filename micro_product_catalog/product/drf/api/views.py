@@ -15,7 +15,7 @@ class ProductViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        publish('product_created', serializer.data) # create event to send
+        publish('product_created', serializer.data) # create event: send data to catalog microservice
         print('product created!!!')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -37,13 +37,13 @@ class ProductViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(instance=product, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        # TODO: publish('product_updated', serializer.data) # update event to send
+        # TODO: publish('product_updated', serializer.data) # update event: send data to catalog microservice
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request, pk=None):
         product = Product.objects.get(pr_id = pk)
         product.delete()
-        # TODO: publish('product_deleted', pk) # delete event to send
+        # TODO: publish('product_deleted', pk) # delete event: send data to catalog microservice
         return Response('bye!', status=status.HTTP_204_NO_CONTENT)
 
 
