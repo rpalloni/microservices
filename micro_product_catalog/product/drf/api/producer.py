@@ -14,13 +14,13 @@ connection = pika.BlockingConnection(params)
 # create channel
 channel = connection.channel()
 
-# declare queue where to receive event
+# declare queue where to send event
 channel.queue_declare(queue='product_worker') 
 
 def publish(method, body):
     properties = pika.BasicProperties(method)
     channel.basic_publish(
         exchange='',
-        routing_key='product_worker', # channel queue where to send event
+        routing_key='product_worker',
         body=json.dumps(body), 
         properties=properties)

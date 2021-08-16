@@ -8,7 +8,7 @@ CRUD ops via Postman:
 
 * catalog microservice (Django Rest Framework)
 Create catalog
-Add product data to catalog
+Add products to catalog
 
 
  ______ container _______                       _______ container ________
@@ -25,7 +25,7 @@ Add product data to catalog
 |________________________|                     |__________________________|
 
 
-create/update/destroy => publish() message queue (producer.py) => add to catalog (consumer.py)
+create/update/destroy events => publish() message queue (producer.py) => add/update/remove product in catalog (consumer.py)
 
 >> command: python manage.py consumer
 custom django command to run consumer.py within the framework context
