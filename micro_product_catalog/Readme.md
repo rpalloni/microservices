@@ -1,21 +1,21 @@
 A simple product-catalog application following a microservices architecture composed of two independent and dynamic services
 that communicate with each other using AMQP (Advanced Message Queuing Protocol) communication protocol
 
-Project setup:
-** product microservice (Django Rest Framework) ** \
+Project setup: \
+**product microservice (Django Rest Framework)** \
 CRUD ops via Postman:
 - create
 - list/retrieve
 - update
 - destroy
 
-** catalog microservice (Django Rest Framework) ** \
+**catalog microservice (Django Rest Framework)** \
 Create catalog \
-Add products to catalog \
+Add products to catalog
 
-** RabbitMQ as AMQP broker **
+**RabbitMQ as AMQP broker**
 
-** no shared db: each microservice has its own database instance **
+**No shared db: each microservice has its own database instance**
 
 ~~~
  ______ container _______                       _______ container ________
