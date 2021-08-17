@@ -36,6 +36,9 @@ class Command(BaseCommand):
                 product.save()
                 print('Product created!')
 
+            # TODO: properties.content_type == 'product_updated'
+            # TODO: properties.content_type == 'product_deleted'
+
         # consume queue msg
         channel.basic_consume(queue='product_worker', on_message_callback=callback, auto_ack=True) # no acknowledge
 
