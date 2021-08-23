@@ -1,12 +1,12 @@
 # microservices
 
-main features:
-* microservice
+Main features:
+* microservices architecture
 * dockerization
 * crud ops via api
 * queue broker
 
-dev tools:
+Dev tools:
 * FastAPI
 * Django Rest Framework
 * Pika
