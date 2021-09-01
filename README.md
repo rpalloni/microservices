@@ -1,7 +1,7 @@
 # microservices
+Simple projects with microservices architectures using python frameworks
 
 Main features:
-* microservices architecture
 * dockerization
 * crud ops via api
 * queue broker
